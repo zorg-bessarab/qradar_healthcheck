@@ -1,10 +1,10 @@
-from api_tools import wrap_api_test, parse_json
+from api_tools import wrap_api_test, parse_from_api
 from xfconfig import xf_headers, xf_url
 
 
 @wrap_api_test('/hub/extensions', {'filter': 'key=QRADAR_APP'}, xf_headers,
                xf_url)
-@parse_json(dict)
+@parse_from_api(dict)
 def get_content_ext(response):
     stupid_dict = {}
     ext_gen = (ext for ext in response['extensions'] if 'search_tags' in ext['value']['app_details']['tags'])

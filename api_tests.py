@@ -1,4 +1,4 @@
-from api_tools import wrap_api_test, parse_json, write_result_to_csv
+from api_tools import wrap_api_test, parse_from_api, write_result_to_csv
 import qrtools
 import xftools
 import datetime
@@ -6,7 +6,7 @@ import datetime
 
 # Test 1 check current version of QRadar
 @wrap_api_test("/api/system/about")
-@parse_json(dict)
+@parse_from_api(dict)
 @write_result_to_csv('version_test')
 def version_test(response):
     return response
@@ -14,7 +14,7 @@ def version_test(response):
 
 # Test 2 Validates hosts with ERROR status
 @wrap_api_test("/api/config/deployment/hosts", {"filter": "status!=Active"})
-@parse_json(list)
+@parse_from_api(list)
 def hosts_test(response):
     for i in response:
         print(f"""ServerID: {i["id"]} {i["hostname"]}@{i["private_ip"]} is in {i["status"]} state""")
@@ -25,7 +25,7 @@ def hosts_test(response):
                {"fields": "hostname,private_ip,appliance,average_eps,peak_eps,peak_fpm,total_memory,cpus,version,"
                           "eps_allocation,fpm_allocation, encryption_enabled, compression_enabled",
                 "filter": "status=Active"})
-@parse_json(list)
+@parse_from_api(list)
 def deployment_hosts(response):
     for i in response:
         print(i)
@@ -40,7 +40,7 @@ def deployment_hosts(response):
 
 # Test 19 Offense opened + general
 @wrap_api_test("/api/siem/offenses", {"filter": "status=OPEN"})
-@parse_json(list)
+@parse_from_api(list)
 def test_offenses(response):
     of_count = sum(1 for i in response)
     print(f"Now {of_count} Offenses are opened.")
@@ -51,7 +51,7 @@ def test_offenses(response):
 
 # Test 24 Validates system backup settings
 @wrap_api_test("/api/backup_and_restore/backups")
-@parse_json(list)
+@parse_from_api(list)
 def backup_test(response):
     time_delta = datetime.datetime.now() - datetime.timedelta(days=3)
     for i in response:
@@ -69,7 +69,7 @@ def backup_test(response):
 
 # Test opt to check deployment errors
 @wrap_api_test("/api/staged_config/deploy_status")
-@parse_json(dict)
+@parse_from_api(dict)
 def check_deploy(response):
     print(f"Last deployment status: {response}")
 
@@ -96,6 +96,7 @@ def recommend_ext():
     return recommendations_dict
 
 
+# Return recommended apps based on LS and apps from example files (write to csv file) - OFFLINE mode
 @write_result_to_csv('result_ga_8_file')
 def recommend_ext_file():
     recommendations_dict = {}

@@ -27,7 +27,7 @@ def wrap_api_test(api_method, data=None, headers=qr_headers, url=qr_url):
 
 
 # Wrapper for parse response type from QRadar. define type for expected input i.e list, dict.
-def parse_json(expected_type):
+def parse_from_api(expected_type):
     def wrapper(func):
         def wrapper_parse_json(response):
             result = json.loads(response)

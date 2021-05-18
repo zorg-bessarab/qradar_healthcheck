@@ -1,6 +1,7 @@
 import requests
 import urllib.parse
 import json
+import csv
 from qconfig import qr_url, qr_headers
 
 
@@ -38,9 +39,18 @@ def parse_json(expected_type):
                     return func(result_gen)
                 else:
                     return func(result)
-
         return wrapper_parse_json
+    return wrapper
 
+
+# Wrapper to parse results from files in case no access to console
+def parse_from_file(file_path):
+    def wrapper(func):
+        def parse_json_from_file():
+            with open(file_path) as f:
+                result = [i for i in json.loads(f.read())]
+            return func(result)
+        return parse_json_from_file
     return wrapper
 
 
@@ -65,3 +75,16 @@ def categorise_the_dict(key):
             return func(cat_dict)
         return categorise_wr_dict
     return wrapper
+
+
+# Decorator to write test result to csv
+def write_result_to_csv(result_name):
+    def save_result_dict_to_csv(func):
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            with open(f'{result_name}.csv', 'w', newline='') as result_file:
+                writer = csv.writer(result_file)
+                for k, v in result.items():
+                    writer.writerow([k, v])
+        return wrapper
+    return save_result_dict_to_csv

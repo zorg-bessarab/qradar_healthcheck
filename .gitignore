@@ -1,3 +1,7 @@
 .env
 /venv/
 .idea/
+result_ga_8_file.csv
+ls_ga_8
+ext_ga_8
+file_test.py

@@ -1,4 +1,4 @@
-from api_tools import wrap_api_test, parse_json
+from api_tools import wrap_api_test, parse_json, write_result_to_csv
 import qrtools
 import xftools
 import datetime
@@ -7,9 +7,9 @@ import datetime
 # Test 1 check current version of QRadar
 @wrap_api_test("/api/system/about")
 @parse_json(dict)
+@write_result_to_csv('version_test')
 def version_test(response):
-    for i in response:
-        print(f"{i} is {response[i]}")
+    return response
 
 
 # Test 2 Validates hosts with ERROR status
@@ -74,7 +74,8 @@ def check_deploy(response):
     print(f"Last deployment status: {response}")
 
 
-# Return recommended apps based on LS
+# Return recommended apps based on LS (write to csv file)
+@write_result_to_csv('result_1')
 def recommend_ext():
     recommendations_dict = {}
     ls_list = qrtools.get_ls_types()['SUCCESS']
@@ -95,5 +96,27 @@ def recommend_ext():
     return recommendations_dict
 
 
+@write_result_to_csv('result_ga_8_file')
+def recommend_ext_file():
+    recommendations_dict = {}
+    ls_list = qrtools.get_ls_types_file()['SUCCESS']
+    # Find not installed apps
+    qapps = qrtools.get_apps_file()
+    xfapps = xftools.get_content_ext()
+    new_app_keys = xfapps.keys()-qapps.keys()
+    # Dict of not installed apps
+    new_apps = dict((key, value) for key, value in xfapps.items() if key in new_app_keys)
+    # Check by type_id
+    for ls in ls_list:
+        for key in new_apps:
+            if ls['type_id'] in new_apps[key]['type_id']:
+                if ls['name'] in recommendations_dict:
+                    recommendations_dict[ls['name']].append(key)
+                else:
+                    recommendations_dict[ls['name']] = [key]
+    return recommendations_dict
+
+
 if __name__ == '__main__':
-    print(recommend_ext())
+    recommend_ext_file()
+ #   version_test()

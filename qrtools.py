@@ -1,4 +1,4 @@
-from api_tools import wrap_api_test, parse_json, categorise_the_dict
+from api_tools import wrap_api_test, parse_json, categorise_the_dict, parse_from_file
 
 
 # Get all extentions
@@ -15,6 +15,27 @@ def get_apps_by_name(app_dict):
 @categorise_the_dict('status')
 def get_ls_types(ls_dict):
     return ls_dict
+
+
+# Get extensions from file
+@parse_from_file('ext_ga_8')
+@categorise_the_dict('name')
+def get_apps_file(ls_list):
+    return ls_list
+
+
+# Get LSs from file
+@parse_from_file('ls_ga_8')
+@categorise_the_dict('status')
+def get_ls_types_file(ls_dict):
+    return ls_dict
+
+
+
+# Get LS from file
+@parse_json(list)
+def get_from_file(content):
+    return content
 
 
 # Get all hosts

@@ -1,9 +1,8 @@
 .env
 /venv/
 .idea/
-offline/results/result_ga_8_file.csv
-offline/sources/ls_ga_8
-offline/sources/ext_ga_8
+offline/results/
+offline/sources/
 file_test.py
 results/version_test.csv
 results/result_1.csv

@@ -24,6 +24,7 @@ def recommend_ext_file():
                     recommendations_dict[ls['name']] = [key]
     return recommendations_dict
 
+
 # Return table with !!!ALL!!! apps based on LS and apps from example files (write to csv file) - OFFLINE mode
 @write_result_to_csv(r'..\offline\results\result_ga_8_file_all')
 def recommend_ext_file_all():

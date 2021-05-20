@@ -2,7 +2,7 @@ import requests
 import urllib.parse
 import json
 import csv
-from qconfig import qr_url, qr_headers
+from qradar.qconfig import qr_url, qr_headers
 
 
 # Wrapper for api requests to QRadar. Set filters and filed in dictionary {"filter": "1field=abc,2filed=..."}
@@ -88,3 +88,14 @@ def write_result_to_csv(result_name):
                     writer.writerow([k, v])
         return wrapper
     return save_result_dict_to_csv
+
+
+# Adds type field to ref-data
+def set_key(key):
+    def iter_dec(func):
+        def wrapper(r_list):
+            for r in r_list:
+                r['type'] = key
+            return func(r_list)
+        return wrapper
+    return iter_dec

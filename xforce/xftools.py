@@ -1,5 +1,5 @@
-from api_tools import wrap_api_test, parse_from_api
-from xfconfig import xf_headers, xf_url
+from config.api_tools import wrap_api_test, parse_from_api
+from xforce.xfconfig import xf_headers, xf_url
 
 
 @wrap_api_test('/hub/extensions', {'filter': 'key=QRADAR_APP'}, xf_headers,

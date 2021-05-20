@@ -1,0 +1,75 @@
+number_of_elements,value_label,time_to_live,key_label,creation_time,element_type,timeout_type,key_name_types,name,type
+0,,,,1440703811218,IP,FIRST_SEEN,,SSH Servers,set
+7,,,,1535985336857,ALNIC,FIRST_SEEN,,Cryptocurrency Mining Javascript File Hashes,set
+0,,,,1471979469011,ALNIC,FIRST_SEEN,,UBA : Trusted Usernames,set
+1,,,,1550163803640,IP,FIRST_SEEN,,EC Critical Assets,set
+0,,,,1440703748272,IP,FIRST_SEEN,,FTP Servers,set
+0,,,,1390246931486,IP,FIRST_SEEN,,Asset Reconciliation IPv4 Whitelist,set
+0,,,,1534879326530,IP,FIRST_SEEN,,Cryptocurrency Mining IPs,set
+2,,,,1553191976085,ALN,FIRST_SEEN,,EC TempFilePath,set
+0,,,,1539894917857,ALNIC,FIRST_SEEN,,EC Cryptocurrency Mining Threat Names,set
+0,,,,1440695740583,IP,FIRST_SEEN,,Critical Assets,set
+2,,,,1505075219867,IP,FIRST_SEEN,,Compromised Hosts,set
+2,,,,1502477033185,ALN,FIRST_SEEN,,TempFilePath,set
+0,,,,1550262051154,ALN,FIRST_SEEN,,EC Potentially Attacked Users,set
+0,,,,1440703846455,IP,FIRST_SEEN,,Web Servers,set
+37,,,,1536318513796,ALNIC,FIRST_SEEN,,Cryptocurrency Mining Process Names,set
+7,,,,1505477997973,ALNIC,FIRST_SEEN,,IOCs - Malicious Service names,set
+0,,,,1579530517941,ALN,FIRST_SEEN,,Whitelisted Email Admins,set
+0,,,,1390246958190,ALNIC,FIRST_SEEN,,Asset Reconciliation NetBIOS Whitelist,set
+1,,,,1553003227875,ALNIC,FIRST_SEEN,,EC Spam Sender Hosts,set
+0,,,,1557250595926,ALNIC,FIRST_SEEN,,EC Profiled Process Hashes,set
+0,,,,1348244577718,ALN,LAST_SEEN,,Teleworker,set
+0,,0 years 0 mons 7 days 0 hours 0 mins 0.00 secs,,1389036075909,ALNIC,LAST_SEEN,,Asset Reconciliation MAC Blacklist,set
+0,,,,1440703759405,IP,FIRST_SEEN,,LDAP Servers,set
+0,,,,1544542525191,ALNIC,FIRST_SEEN,,EC Phishing Subjects,set
+0,,,,1440703770114,IP,FIRST_SEEN,,Mail Servers,set
+0,,,,1348244570271,ALN,LAST_SEEN,,External Contractor,set
+0,,0 years 0 mons 7 days 0 hours 0 mins 0.00 secs,,1389035969294,IP,LAST_SEEN,,Asset Reconciliation IPv4 Blacklist,set
+0,,,,1440703786541,IP,FIRST_SEEN,,Proxy Servers,set
+0,,,,1502232034322,ALNIC,FIRST_SEEN,,WhitelistedHashes,set
+37,,,,1503022405562,ALNIC,FIRST_SEEN,,Systools,set
+0,,,,1529425623475,ALNIC,FIRST_SEEN,,ProcesstoParentProcessPathRefMapKeys,set
+0,,,,1349187794201,ALN,LAST_SEEN,,IT Admins,set
+0,,,,1440703735265,IP,FIRST_SEEN,,DNS Servers,set
+0,,0 years 0 mons 0 days 1 hours 0 mins 0.00 secs,,1539199805456,ALN,LAST_SEEN,,EC UserAccountUsed,set
+0,,0 years 0 mons 0 days 1 hours 0 mins 0.00 secs,,1539199789730,ALN,LAST_SEEN,,EC UserAccountCreated,set
+0,,,,1354560576159,ALN,LAST_SEEN,,Mobile Worker,set
+0,,,,1440703711884,IP,FIRST_SEEN,,Database Servers,set
+171,,,,1534878068974,ALNIC,FIRST_SEEN,,Cryptocurrency Mining Threat Names,set
+0,,0 years 0 mons 7 days 0 hours 0 mins 0.00 secs,,1389036057763,ALNIC,LAST_SEEN,,Asset Reconciliation DNS Blacklist,set
+28,,,,1501691859090,ALNIC,FIRST_SEEN,,Windows Sensitive Processes,set
+181,,,,1579271159083,ALNIC,FIRST_SEEN,,Executable Extensions,set
+7,,,,1521571212012,ALNIC,FIRST_SEEN,,Malicious Web Categories,set
+510,,,,1503169142311,ALNIC,FIRST_SEEN,,ProcessHashesStartedAsSystemUser,set
+0,,,,1529422172208,ALNIC,FIRST_SEEN,,ProcessNametoHashRefMapOfSetKeys,set
+1,,,,1557250160405,IP,FIRST_SEEN,,EC Compromised Hosts,set
+102,,,,1535631529980,ALN,FIRST_SEEN,,Cryptocurrency Mining Threat Hashes,set
+0,,,,1534879119148,ALN,FIRST_SEEN,,Cryptocurrency Mining Hosts,set
+0,,,,1390246992901,ALNIC,FIRST_SEEN,,Asset Reconciliation DNS Whitelist,set
+24,,,,1535984555063,ALNIC,FIRST_SEEN,,Cryptocurrency Miners JavaScript File Names,set
+0,,,,1390247011306,ALNIC,FIRST_SEEN,,Asset Reconciliation MAC Whitelist,set
+0,,,,1440703855335,IP,FIRST_SEEN,,Windows Servers,set
+1,,,,1552589310391,IP,FIRST_SEEN,,EC ScanningWorkstation,set
+0,,,,1557250644224,ALNIC,FIRST_SEEN,,EC Profiled Process Names,set
+11,,,,1515676805721,IP,FIRST_SEEN,,QRadar Deployment,set
+52,,,,1464119409207,ALNIC,LAST_SEEN,,Phishing Subjects,set
+0,,,,1557250483925,ALNIC,FIRST_SEEN,,EC ProcessHashesStartedAsSystemUser,set
+2,,,,1542802944513,ALNIC,FIRST_SEEN,,Corporate Email Domains,set
+0,,,,1529422730639,ALNIC,FIRST_SEEN,,Profiled Process Hashes,set
+0,,0 years 0 mons 7 days 0 hours 0 mins 0.00 secs,,1389036032886,ALNIC,LAST_SEEN,,Asset Reconciliation NetBIOS Blacklist,set
+0,,,,1544542535998,ALNIC,FIRST_SEEN,,EC Phishing Requested URLs,set
+0,,,,1440703724417,IP,FIRST_SEEN,,DHCP Servers,set
+0,,,,1529422721406,ALNIC,FIRST_SEEN,,Profiled Process Names,set
+1,,,,1586262737781,ALN,UNKNOWN,,d8dfd5026b5d7f690365c19a1b9f59fb,map
+1,,,,1586507564994,ALN,UNKNOWN,,85d9bf90-240d-4bda-82d8-0d6af189659d,map
+1,,,,1586262737995,ALN,UNKNOWN,,d2f76ac7aeabae3601458b08e476631e,map
+1,,,,1586507619414,ALN,UNKNOWN,,76cbcec8-b209-4d89-b70b-b04c690c5ed4,map
+1,,,,1586507619613,ALN,UNKNOWN,,983ce9af-1869-4015-8307-bd4c0192e36c,map
+23,,,,1502665886418,ALN,LAST_SEEN,,ProcessMaptoProcessPath,map_of_sets
+24,,,,1502666573789,ALNIC,LAST_SEEN,,ProcessMaptoProcessParentPath,map_of_sets
+0,destinationip,0 years 2 mons 0 days 0 hours 0 mins 0.00 secs,username,1440695697155,IP,LAST_SEEN,,User-System Authentication or Usage,map_of_sets
+0,,,,1399659402000,ALN,UNKNOWN,,CorrelatedAttackMap,map_of_sets
+0,,,,1502059335760,ALNIC,LAST_SEEN,,ProcessNametoHash,map_of_sets
+0,,,Event Name,1548179879069,ALN,UNKNOWN,{'risk': 'NUM'},UBA : Rule Data,table
+8,,,,1569435186259,ALN,UNKNOWN,,pulse_imports,table

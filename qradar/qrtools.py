@@ -63,7 +63,6 @@ def get_ref_set(set_list):
 @wrap_api_test("/api/reference_data/maps")
 @parse_from_api(list)
 @set_key('map')
-@categorise_the_dict('type')
 def get_ref_map(map_list):
     return map_list
 
@@ -85,11 +84,10 @@ def get_ref_tables(tables_list):
 
 
 # Sum all reference data in 1 list
-@categorise_the_dict('type', get_ref_set() + get_ref_map() + get_ref_map_of_sets() + get_ref_tables())
-def get_all_ref(all_dict):
-    return all_dict
+def get_all_ref():
+    return get_ref_set() + get_ref_map() + get_ref_map_of_sets() + get_ref_tables()
 
 
 if __name__ == '__main__':
     print(get_all_ref())
-    print(get_net_h())
+ #   print(get_ref_tables())

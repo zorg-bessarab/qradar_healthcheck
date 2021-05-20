@@ -1,4 +1,4 @@
-from config.api_tools import write_result_to_csv
+from config.api_tools import write_result_to_csv, write_list_to_csv
 import offline.qrtools as qrtools
 from xforce import xftools
 
@@ -41,8 +41,14 @@ def recommend_ext_file_all():
     return recommendations_dict
 
 
-# Return table with hosts (Version, Status, Hostname, IP, HA, DR, Requirements for latest version)
+# Return table with ref data
+@write_list_to_csv(r'results\reference_data_table')
+def analyse_ref_data_file():
+    ref_list = qrtools.get_all_ref()
+    return ref_list
+
 
 if __name__ == '__main__':
     recommend_ext_file()
     recommend_ext_file_all()
+    analyse_ref_data_file()

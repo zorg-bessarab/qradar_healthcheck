@@ -1,9 +1,8 @@
-import qradar.qrtools
-from config.api_tools import wrap_api_test, parse_from_api, write_result_to_csv
+from config.api_tools import wrap_api_test, parse_from_api, write_result_to_csv, write_list_to_csv
 from qradar import qrtools
 from xforce import xftools
 import datetime
-import collections
+
 
 # Test 1 check current version of QRadar
 @wrap_api_test("/api/system/about")
@@ -54,9 +53,10 @@ def recommend_ext():
 
 
 # Create table with all Reference Data
-@write_result_to_csv(r'results\reference_data_table')
+@write_list_to_csv(r'results\reference_data_table')
 def analyse_ref_data():
-    return qrtools.get_all_ref()
+    ref_list = qrtools.get_all_ref()
+    return ref_list
 
 
 if __name__ == '__main__':

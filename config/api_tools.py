@@ -2,6 +2,7 @@ import requests
 import urllib.parse
 import json
 import csv
+import collections
 from qradar.qconfig import qr_url, qr_headers
 
 
@@ -77,7 +78,16 @@ def categorise_the_dict(key):
     return wrapper
 
 
-# Decorator to write test result to csv
+# Convert list of dict to def-dict
+def cat_def_dict(input_list):
+    result = collections.defaultdict(list)
+    for r in input_list:
+        for k, v in r.items():
+            result[k].append(v)
+    return result
+
+
+# Decorator to write dict test result to csv
 def write_result_to_csv(result_name):
     def save_result_dict_to_csv(func):
         def wrapper(*args, **kwargs):
@@ -86,6 +96,19 @@ def write_result_to_csv(result_name):
                 writer = csv.writer(result_file)
                 for k, v in result.items():
                     writer.writerow([k, v])
+        return wrapper
+    return save_result_dict_to_csv
+
+
+# Decorator to write list of dict test result to csv
+def write_list_to_csv(result_name):
+    def save_result_dict_to_csv(func):
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            with open(f'{result_name}.csv', 'w', newline='') as result_file:
+                writer = csv.DictWriter(result_file, list(set(k for r in result for k in r.keys())))
+                writer.writeheader()
+                writer.writerows(result)
         return wrapper
     return save_result_dict_to_csv
 

@@ -60,6 +60,6 @@ def analyse_ref_data():
 
 
 if __name__ == '__main__':
-#    recommend_ext()
-#    version_test()
+    recommend_ext()
+    version_test()
     analyse_ref_data()

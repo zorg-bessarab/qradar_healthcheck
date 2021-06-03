@@ -1,4 +1,0 @@
-SIM Audit-2 :: qradar,['IBM QRadar Security Analytics Self Monitoring']
-Microsoft DNS Debug @ SECURITY-DNS,['IBM QRadar DNS Analyzer']
-System Notification-2 :: qradar,['IBM QRadar Security Analytics Self Monitoring']
-WindowsAuthServer @ SECURITY-I2,"['IBM QRadar Custom Properties for Microsoft Windows', 'IBM Security ISO 27001 Content', 'IBM QRadar HIPAA Content Extension', 'IBM Security GPG13 Content', 'IBM QRadar Compliance Content Extension', 'IBM QRadar Ransomware Content Extension', 'QRadar Cloud Visibility']"

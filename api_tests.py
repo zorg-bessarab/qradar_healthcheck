@@ -1,65 +1,53 @@
-from config.api_tools import wrap_api_test, parse_from_api, write_result_to_csv, write_list_to_csv
-from qradar import qrtools
-from xforce import xftools
-import datetime
+from qradar import qrtools as qr
+from xforce import xftools as xf
+import pandas as pd
 
 
-# Test 1 check current version of QRadar
-@wrap_api_test("/api/system/about")
-@parse_from_api(dict)
-@write_result_to_csv(r'results\qradar_version')
-def version_test(response):
-    return response
-
-
-# Test 24 Validates system backup settings
-@wrap_api_test("/api/backup_and_restore/backups")
-@parse_from_api(list)
-def backup_test(response):
-    time_delta = datetime.datetime.now() - datetime.timedelta(days=3)
-    for i in response:
-        start_time = datetime.datetime.fromtimestamp(i['time_initiated'] / 1000)
-        if i["status"] != "SUCCESS":
-            print(f"""Incomplete {i["type"]} backup {i["name"]}@{i["id"]} detected:
-            initiated by {i["intiated_by"]}, 
-            started on {start_time}, 
-            description - {i["description"]}""")
-        else:
-            if time_delta.timestamp() < i['time_completed'] / 1000:
-                print(f"""The last 3 day backup: {i["name"]}@{i["id"]} """
-                      f"""initiated by {i["intiated_by"]} on {start_time}.""")
-
-
-# Return recommended apps based on LS (write to csv file)
-@write_result_to_csv(r'results\recommended_log_source_extensions')
-def recommend_ext():
-    recommendations_dict = {}
-    ls_list = qrtools.get_ls_types()['SUCCESS']
-    # Find not installed apps
-    qapps = qrtools.get_apps_by_name()
-    xfapps = xftools.get_content_ext()
-    new_app_keys = xfapps.keys()-qapps.keys()
-    # Dict of not installed apps
-    new_apps = dict((key, value) for key, value in xfapps.items() if key in new_app_keys)
-    # Check by type_id
-    for ls in ls_list:
-        for key in new_apps:
-            if ls['type_id'] in new_apps[key]['type_id']:
-                if ls['name'] in recommendations_dict:
-                    recommendations_dict[ls['name']].append(key)
-                else:
-                    recommendations_dict[ls['name']] = [key]
-    return recommendations_dict
-
-
-# Create table with all Reference Data
-@write_list_to_csv(r'results\reference_data_table')
-def analyse_ref_data():
-    ref_list = qrtools.get_all_ref()
+# Create table with all Reference Data (excel)
+def analyse_ref_set():
+    ref_list = pd.read_json(qr.get_ref_set())
+    ref_list.to_excel('report.xlsx', sheet_name='reference data', index=False)
     return ref_list
 
 
+def analyse_ref_map():
+    ref_list = pd.read_json(qr.get_ref_map())
+    return ref_list
+
+
+def analyse_ref_tables():
+    ref_list = pd.read_json(qr.get_ref_tables())
+    return ref_list
+
+
+def analyse_ref_mset():
+    ref_list = pd.read_json(qr.get_ref_map_of_sets())
+    return ref_list
+
+
+# Create table with rules (excel)
+def print_rules():
+    rules_list = pd.read_json(qr.get_rules())
+    return rules_list
+
+
+# Create table with offenses (excel)
+def print_offenses():
+    offenses_list = pd.read_json(qr.get_offenses())
+    return offenses_list
+
+
+def write_to_excel(path=r'results\report.xlsx'):
+    writer = pd.ExcelWriter(path, engine='openpyxl')
+    analyse_ref_set().to_excel(writer, sheet_name='ref set')
+    analyse_ref_map().to_excel(writer, sheet_name='ref map')
+    analyse_ref_mset().to_excel(writer, sheet_name='ref mset')
+    analyse_ref_tables().to_excel(writer, sheet_name='ref table')
+    print_rules().to_excel(writer, sheet_name='rules')
+    print_offenses().to_excel(writer, sheet_name='offenses')
+    writer.save()
+    writer.close()
+
+
 if __name__ == '__main__':
-#    recommend_ext()
-#    version_test()
-    analyse_ref_data()
+    write_to_excel()

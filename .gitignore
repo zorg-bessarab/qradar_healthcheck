@@ -6,3 +6,4 @@ file_test.py
 results/version_test.csv
 results/result_1.csv
 /offline/results/
+.vscode/

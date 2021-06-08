@@ -1,4 +1,4 @@
-from config.api_tools import wrap_api_test, set_key
+from config.api_tools import wrap_api_test
 
 
 # Get all extensions
@@ -65,4 +65,3 @@ def get_ref_tables(tables_list):
 
 if __name__ == '__main__':
     print(get_offenses())
-

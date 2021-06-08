@@ -1,5 +1,5 @@
 from qradar import qrtools as qr
-from xforce import xftools as xf
+# from xforce import xftools as xf
 import pandas as pd
 
 
